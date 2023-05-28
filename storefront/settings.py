@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,7 +46,7 @@ INSTALLED_APPS = [
     'store',
     'store_custom',
     'tags',
-    'likes'
+    'likes',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +96,7 @@ DATABASES = {
         'NAME': 'storefront',
         'HOST': 'localhost',
         'USER': 'root',
-        'PASSWORD': 'Jishu7@#'
+        'PASSWORD': env('MYSQL_PASSWORD')
     }
 }
 
